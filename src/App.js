@@ -27,18 +27,21 @@ function App() {
     getItem();
   }, []);
 
- 
   return (
     <div className="App">
-      <Navbar />
+      <div className="h-14">
+        <Navbar />
+      </div>
 
       <div className="flex bg-grey-100">
-        <Sidebar />
-        <div className=" w-full bg-grey-100 p-3">
+        <div className="w-72">
+          <Sidebar />
+        </div>
+        <div className="w-4/5 fixed right-0 top-20">
           <Filter />
-          
+        </div>
 
-
+        <div className="w-4/5 right-0 mt-16 bg-grey-100 p-4 ">
           <div className="mt-5 mb-5">
             <h2 className="font-normal">Search result for "Zenfone Max Pro"</h2>
             <h2 className="font-semibold">100 result</h2>
@@ -47,7 +50,7 @@ function App() {
           <div className="flex flex-wrap gap-4">
             {item ? (
               item.map((it) => {
-                return <Item name={it.name} description={it.description} />;
+                return <Item name={it.name} description={it.description} img={it.image} />;
               })
             ) : (
               <div class="flex justify-center items-center">
@@ -63,8 +66,7 @@ function App() {
         </div>
       </div>
     </div>
-  ) ;
-           
+  );
 }
 
 export default App;
