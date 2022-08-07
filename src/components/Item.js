@@ -5,26 +5,29 @@ const Item = (props) => {
 
   let name = props.name;
   let des = props.description;
+  let img = props.img;
+  console.log("image", img);
 
   console.log("iteasm", name);
 
   return (
-    <div className="  shadow-md border rounded-md flex w-full hover:bg-gray-100 hover:cursor-pointer">
-      <img
-        src="https://picsum.photos/200/300"
-        height="100"
-        className="rounded-md"
-      ></img>
+    <div className="  shadow-md border rounded-md flex w-full hover:bg-gray-100 hover:cursor-pointer p-3">
+      {img ? (
+        <img src={`http://localhost:8000${img}`} width="200" className="rounded-md "></img>
+      ) : (
+        ""
+      )}
+
       <div className="mx-3 my-2">
-        <div className="h-3/4">
+        <div className="mb-6">
           <div className="flex align-bottom">
-            <p className="font-bold text-lg text-red-600 mb-3" >
-              {name}{" "}
-            </p><p className="text-lg align-bottom text-gray-400 ml-2"> ( 100 reviews ) </p>
+            <p className="font-bold text-lg text-red-600 mb-3">{name} </p>
+            <p className="text-lg align-bottom text-gray-400 ml-2">
+              {" "}
+              ( 100 reviews ){" "}
+            </p>
           </div>
-          <p className="font-italic text-md">
-            {des}
-          </p>
+          <p className="font-italic text-md">{des}asdsasd asda sdasdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd aadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sd sd a sda sd a sdas da s as a sda sdasdasas das dasd as das dasd</p>
         </div>
         <div className=""></div>
         <div className="flex items-center">

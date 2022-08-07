@@ -23,7 +23,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="flex h-screen bg-red-100">
+    <div className="flex h-screen bg-red-100 fixed top-16">
       <div className="flex w-72 flex-col border-r-2 border-gray-200 bg-gray-100 p-2 ">
         <input
           className="w-full mt-2 py-2 px-3 border-2 rounded-md"
