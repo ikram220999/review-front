@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImage, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 const Item = (props) => {
   const star = [1, 1, 1, 1, 1];
+  const [vote, setVote] = useState(20);
 
   let name = props.name;
   let des = props.description;
@@ -10,15 +12,38 @@ const Item = (props) => {
 
   console.log("iteasm", name);
 
-  return (
-    <div className="  shadow-md border rounded-md flex w-full hover:bg-gray-100 hover:cursor-pointer p-3">
-      {img ? (
-        <img src={`http://localhost:8000${img}`} width="200" className="rounded-md "></img>
-      ) : (
-        ""
-      )}
+  const voteUp = () => {
+    setVote(vote+1);
+  }
 
-      <div className="mx-3 my-2">
+  const voteDown = () => {
+    setVote(vote-1);
+  }
+
+  return (
+    <div className="  shadow-md border rounded-md flex w-full hover:bg-gray-50 hover:cursor-pointer p-3">
+      <div className="w-1/6">
+        {img.length > 9 ? (
+          <img
+            src={`http://localhost:8000${img}`}
+            width=""
+            className="rounded-md "
+          ></img>
+        ) : (
+          <div
+            className=" border border-gray-200 rounded-md 
+          flex flex-col items-center justify-center h-4/5 text-gray-400"
+          >
+            <FontAwesomeIcon
+              icon={faImage}
+              className="text-gray-300 text-3xl"
+            ></FontAwesomeIcon>
+            <p>No image</p>
+          </div>
+        )}
+      </div>
+
+      <div className="w-4/6 mx-3 my-2">
         <div className="mb-6">
           <div className="flex align-bottom">
             <p className="font-bold text-lg text-red-600 mb-3">{name} </p>
@@ -27,7 +52,9 @@ const Item = (props) => {
               ( 100 reviews ){" "}
             </p>
           </div>
-          <p className="font-italic text-md">{des}asdsasd asda sdasdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd aadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sdadada s a a sd as da d a da sd a sda d a da s daa sa sd a sd a sd a sda sd sd a sda sd a sdas da s as a sda sdasdasas das dasd as das dasd</p>
+          <p className="font-italic text-md">
+            {des}
+          </p>
         </div>
         <div className=""></div>
         <div className="flex items-center">
@@ -57,6 +84,11 @@ const Item = (props) => {
         <button className="bg-red-400 text-white font-semibold py-1.5 px-5 rounded-md mt-2 hover:bg-red-500">
           See Review
         </button>
+      </div>
+      <div className="w-1/6 h-full flex flex-col justify-center items-center">
+              <FontAwesomeIcon icon={faSortUp} className="text-7xl text-gray-300 m-0 p-0 hover:text-gray-400" onClick={voteUp}></FontAwesomeIcon>
+              <p className="text-3xl text-gray-600 select-none">{vote}</p>
+              <FontAwesomeIcon icon={faSortDown} className="text-7xl text-gray-300 m-0 p-0 hover:text-gray-400" onClick={voteDown}></FontAwesomeIcon>
       </div>
     </div>
   );

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 
 const Filter = () => {
   return (
-    <div className="p-2 w-5/6 flex flex-wrap gap-3" >
+    <div className="p-2 flex flex-wrap gap-3 " >
      
       <select
         id="countries"
-        class="text-gray-900 border-none text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5 w-60 shadow-md"
+        class="text-black font-semibold border-none text-sm  rounded-lg focus:ring-red-500 focus:border-red-500 block p-2.5 w-60 shadow-md"
       >
         <option selected>Rating</option>
         <option value="US">1 star</option>
@@ -17,7 +17,7 @@ const Filter = () => {
 
       <select
         id="countries"
-        class="text-gray-900 border-none text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block  p-2.5 w-60 shadow-md"
+        class="text-black font-semibold border-none text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block  p-2.5 w-60 shadow-md"
       >
         <option selected>Date</option>
         <option value="US">Newest</option>
@@ -26,7 +26,7 @@ const Filter = () => {
       </select>
       <select
         id="countries"
-        class="text-gray-900 border-none text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block  p-2.5 w-60 shadow-md"
+        class="text-black font-semibold border-none text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block  p-2.5 w-60 shadow-md"
       >
         <option selected>Price</option>
         <option value="US"> below 100 </option>
@@ -36,7 +36,7 @@ const Filter = () => {
       </select>
       <select
         id="countries"
-        class="text-gray-900 border-none text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block  p-2.5 w-60 shadow-md"
+        class="text-black font-semibold border-none text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block  p-2.5 w-60 shadow-md"
       >
         <option selected>Price</option>
         <option value="US"> below 100 </option>

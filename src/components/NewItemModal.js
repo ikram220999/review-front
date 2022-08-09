@@ -186,6 +186,7 @@ const NewItemModal = () => {
                 <TextInput
                   type="text"
                   name="description"
+                  maxLength={150}
                   value={input.description}
                   onChange={handleInput}
                   required={true}
