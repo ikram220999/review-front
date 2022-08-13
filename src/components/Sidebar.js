@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const Sidebar = () => {
+const Sidebar = ( { value } ) => {
   const cate = ["Mobile Phone", "Laptop & Pc", "Furniture", "Food and Drink"];
   const [category, setCategory] = useState([]);
 
@@ -31,10 +31,11 @@ const Sidebar = () => {
         ></input>
 
         <div className="font-bold mt-7 mb-3">Category</div>
-        {category.map((cate) => (
+        {category.map((cate, index) => (
           <a
             href="#"
             className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-200 hover:text-red-600"
+            onClick={() => value(index+1)}
           >
             <span className="text-2xl">
               <i className="bx bx-home"></i>

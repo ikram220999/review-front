@@ -10,10 +10,18 @@ import axios from "axios";
 
 function App() {
   const [item, setItem] = useState([]);
+  const [filter, setFilter] = useState({
+    category: 10,
+    rating: "",
+    date: "",
+    price: "",
+  });
+
+  console.log("filter", filter);
 
   const getItem = () => {
     axios
-      .get("http://localhost:8000/api/item")
+      .get("http://localhost:8000/api/item", { params: { filter } })
       .then(function (response) {
         console.log(response.data);
 
@@ -23,9 +31,31 @@ function App() {
         console.log(error);
       });
   };
+
   useEffect(() => {
     getItem();
   }, []);
+
+  useEffect(() => {
+    getItem();
+  }, [filter]);
+
+  const getItemByCategory = (value) => {
+    // axios.get('http://localhost:8000/api/item', value )
+    // .then(function (response) {
+    //   console.log("child to parent", response);
+
+    // })
+    // .catch(function (error) {
+
+    //   console.log(error);
+    // });
+    console.log("child to parent", value);
+    setFilter({
+      ...filter,
+      category: value,
+    });
+  };
 
   const getReq = () => {};
 
@@ -37,7 +67,7 @@ function App() {
 
       <div className="flex bg-grey-100">
         <div className="md:visible lg:visible invisible">
-          <Sidebar props={getReq} />
+          <Sidebar value={getItemByCategory} />
         </div>
         <div className="w-4/5 flex justify-center fixed right-0 top-20 lg:w-full xl:w-4/5">
           <Filter />
