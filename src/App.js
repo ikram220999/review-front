@@ -87,6 +87,8 @@ function App() {
                     name={it.name}
                     description={it.description}
                     img={it.image}
+                    vote={it.vote}
+                    price={it.price}
                   />
                 );
               })

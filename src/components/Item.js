@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faImage,
+  faSortUp,
+  faSortDown,
+} from "@fortawesome/free-solid-svg-icons";
 const Item = (props) => {
   const star = [1, 1, 1, 1, 1];
-  const [vote, setVote] = useState(20);
+  const [vote, setVote] = useState();
+  const [upclass, setUpClass] = useState("text-gray-300 hover:text-gray-400");
+  const [ucbool, setucBool] = useState(false);
+  const [downclass, setDownClass] = useState(
+    "text-gray-300 hover:text-gray-400"
+  );
+  const [dcbool, setdcBool] = useState(false);
 
   let name = props.name;
   let des = props.description;
@@ -13,12 +23,36 @@ const Item = (props) => {
   console.log("iteasm", name);
 
   const voteUp = () => {
-    setVote(vote+1);
-  }
+    if (!dcbool) {
+      if (ucbool) {
+        setUpClass("text-gray-300 hover:text-gray-400");
+        setucBool(false);
+        setVote(vote - 1);
+      } else {
+        setUpClass("text-yellow-400");
+        setucBool(true);
+        setVote(vote + 1);
+      }
+    }
+  };
 
   const voteDown = () => {
-    setVote(vote-1);
-  }
+    if (!ucbool) {
+      if (dcbool) {
+        setDownClass("text-gray-300 hover:text-gray-400");
+        setdcBool(false);
+        setVote(vote + 1);
+      } else {
+        setDownClass("text-yellow-400");
+        setdcBool(true);
+        setVote(vote - 1);
+      }
+    }
+  };
+
+  useEffect(() => {
+    setVote(props.vote);
+  }, [props.vote]);
 
   return (
     <div className="  shadow-md border rounded-md flex w-full hover:bg-gray-50 hover:cursor-pointer p-3">
@@ -49,14 +83,14 @@ const Item = (props) => {
             <p className="font-bold text-lg text-red-600 mb-3">{name} </p>
             <p className="text-lg align-bottom text-gray-400 ml-2">
               {" "}
-              ( 100 reviews ){" "}
+              ( 100 comment ){" "}
             </p>
           </div>
-          <p className="font-italic text-md">
-            {des}
-          </p>
+          <p className="font-italic text-md">{des}</p>
         </div>
-        <div className=""></div>
+        <div className="">
+          <p className="text-xl font-semibold mb-3">RM {props.price}</p>
+        </div>
         <div className="flex items-center">
           <ul class="flex">
             {star.map((s) => (
@@ -86,9 +120,17 @@ const Item = (props) => {
         </button>
       </div>
       <div className="w-1/6 h-full flex flex-col justify-center items-center">
-              <FontAwesomeIcon icon={faSortUp} className="text-7xl text-gray-300 m-0 p-0 hover:text-gray-400" onClick={voteUp}></FontAwesomeIcon>
-              <p className="text-3xl text-gray-600 select-none">{vote}</p>
-              <FontAwesomeIcon icon={faSortDown} className="text-7xl text-gray-300 m-0 p-0 hover:text-gray-400" onClick={voteDown}></FontAwesomeIcon>
+        <FontAwesomeIcon
+          icon={faSortUp}
+          className={`text-7xl m-0 p-0 ` + upclass}
+          onClick={voteUp}
+        ></FontAwesomeIcon>
+        <p className="text-3xl text-gray-600 select-none">{vote}</p>
+        <FontAwesomeIcon
+          icon={faSortDown}
+          className={`text-7xl m-0 p-0 ` + downclass}
+          onClick={voteDown}
+        ></FontAwesomeIcon>
       </div>
     </div>
   );
