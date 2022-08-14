@@ -89,6 +89,7 @@ function App() {
                     img={it.image}
                     vote={it.vote}
                     price={it.price}
+                    id={it.id}
                   />
                 );
               })

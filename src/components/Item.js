@@ -5,6 +5,7 @@ import {
   faSortUp,
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 const Item = (props) => {
   const star = [1, 1, 1, 1, 1];
   const [vote, setVote] = useState();
@@ -15,6 +16,7 @@ const Item = (props) => {
   );
   const [dcbool, setdcBool] = useState(false);
 
+  const id = props.id;
   let name = props.name;
   let des = props.description;
   let img = props.img;
@@ -25,13 +27,39 @@ const Item = (props) => {
   const voteUp = () => {
     if (!dcbool) {
       if (ucbool) {
-        setUpClass("text-gray-300 hover:text-gray-400");
-        setucBool(false);
-        setVote(vote - 1);
+        axios
+          .get("http://localhost:8000/api/item/vote/up", {
+            params: {
+              id: id,
+              ucbool: ucbool,
+            },
+          })
+          .then(function (response) {
+            console.log(response);
+            setUpClass("text-gray-300 hover:text-gray-400");
+            setucBool(false);
+            setVote(vote - 1);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       } else {
-        setUpClass("text-yellow-400");
-        setucBool(true);
-        setVote(vote + 1);
+        axios
+          .get("http://localhost:8000/api/item/vote/up", {
+            params: {
+              id: id,
+              ucbool: ucbool,
+            },
+          })
+          .then(function (response) {
+            console.log(response);
+            setUpClass("text-yellow-400");
+            setucBool(true);
+            setVote(vote + 1);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
     }
   };
@@ -39,13 +67,39 @@ const Item = (props) => {
   const voteDown = () => {
     if (!ucbool) {
       if (dcbool) {
-        setDownClass("text-gray-300 hover:text-gray-400");
-        setdcBool(false);
-        setVote(vote + 1);
+        axios
+          .get("http://localhost:8000/api/item/vote/down", {
+            params: {
+              id: id,
+              dcbool: dcbool,
+            },
+          })
+          .then(function (response) {
+            console.log(response);
+            setDownClass("text-gray-300 hover:text-gray-400");
+            setdcBool(false);
+            setVote(vote + 1);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       } else {
-        setDownClass("text-yellow-400");
-        setdcBool(true);
-        setVote(vote - 1);
+        axios
+          .get("http://localhost:8000/api/item/vote/down", {
+            params: {
+              id: id,
+              dcbool: dcbool,
+            },
+          })
+          .then(function (response) {
+            console.log(response);
+            setDownClass("text-yellow-400");
+            setdcBool(true);
+            setVote(vote - 1);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
     }
   };
