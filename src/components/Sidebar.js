@@ -31,6 +31,16 @@ const Sidebar = ( { value } ) => {
         ></input>
 
         <div className="font-bold mt-7 mb-3">Category</div>
+        <a
+            href="#"
+            className="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-200 hover:text-red-600"
+            onClick={() => value(0)}
+          >
+            <span className="text-2xl">
+              <i className="bx bx-home"></i>
+            </span>
+            <span>All</span>
+          </a>
         {category.map((cate, index) => (
           <a
             href="#"

@@ -11,7 +11,7 @@ import axios from "axios";
 function App() {
   const [item, setItem] = useState([]);
   const [filter, setFilter] = useState({
-    category: 10,
+    category: 0,
     rating: "",
     date: "",
     price: "",
@@ -89,6 +89,7 @@ function App() {
                     img={it.image}
                     vote={it.vote}
                     price={it.price}
+                    rating={it.rating}
                     id={it.id}
                   />
                 );
