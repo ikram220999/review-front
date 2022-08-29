@@ -94,7 +94,7 @@ const Item = (props) => {
           })
           .then(function (response) {
             console.log(response);
-            setDownClass("text-yellow-400");
+            setDownClass("text-red-400");
             setdcBool(true);
             setVote(vote - 1);
           })
