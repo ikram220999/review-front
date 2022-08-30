@@ -11,6 +11,7 @@ import axios from "axios";
 function App() {
   const [item, setItem] = useState([]);
   const [filter, setFilter] = useState({
+    name: "",
     category: 0,
     rating: "",
     date: "",
@@ -41,21 +42,20 @@ function App() {
   }, [filter]);
 
   const getItemByCategory = (value) => {
-    // axios.get('http://localhost:8000/api/item', value )
-    // .then(function (response) {
-    //   console.log("child to parent", response);
-
-    // })
-    // .catch(function (error) {
-
-    //   console.log(error);
-    // });
     console.log("child to parent", value);
     setFilter({
       ...filter,
       category: value,
     });
   };
+
+  const getSearchData = (value) => {
+    console.log("search", value);
+    setFilter({
+      ...filter,
+      name: value,
+    });
+  }
 
   const getReq = () => {};
 
@@ -67,7 +67,7 @@ function App() {
 
       <div className="flex bg-grey-100">
         <div className="md:visible lg:visible invisible">
-          <Sidebar value={getItemByCategory} />
+          <Sidebar value={getItemByCategory} searchValue={getSearchData} />
         </div>
         <div className="w-4/5 flex justify-center fixed right-0 top-20 lg:w-full xl:w-4/5">
           <Filter />

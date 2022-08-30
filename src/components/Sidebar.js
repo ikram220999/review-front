@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const Sidebar = ( { value } ) => {
+const Sidebar = ( { value, searchValue } ) => {
   const cate = ["Mobile Phone", "Laptop & Pc", "Furniture", "Food and Drink"];
   const [category, setCategory] = useState([]);
 
@@ -28,6 +28,7 @@ const Sidebar = ( { value } ) => {
         <input
           className="w-full mt-2 py-2 px-3 border-2 rounded-md"
           placeholder="Type and press Enter"
+          onChange={(e) => searchValue(e.target.value)}
         ></input>
 
         <div className="font-bold mt-7 mb-3">Category</div>
