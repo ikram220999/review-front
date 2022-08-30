@@ -7,6 +7,7 @@ import Filter from "./components/FIlter";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { counter } from "@fortawesome/fontawesome-svg-core";
 
 function App() {
   const [item, setItem] = useState([]);
@@ -17,7 +18,7 @@ function App() {
     date: "",
     price: "",
   });
-
+  const [searchValue, setSearchValue] = useState("");
   console.log("filter", filter);
 
   const getItem = () => {
@@ -55,7 +56,8 @@ function App() {
       ...filter,
       name: value,
     });
-  }
+    setSearchValue(value);
+  };
 
   const getReq = () => {};
 
@@ -75,8 +77,14 @@ function App() {
 
         <div className="mt-16 bg-grey-100 p-4 ">
           <div className="mt-5 mb-5">
-            <h2 className="font-normal">Search result for "Zenfone Max Pro"</h2>
-            <h2 className="font-semibold">100 result</h2>
+            {searchValue ? (
+              <>
+                <h2 className="font-normal">Search result for {searchValue}</h2>
+                <h2 className="font-semibold">{(item.length)} result</h2>
+              </>
+            ) : (
+              ""
+            )}
           </div>
 
           <div className="flex flex-wrap gap-4">
